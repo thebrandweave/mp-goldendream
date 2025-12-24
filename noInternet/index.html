@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Network Status - Golden Dream</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --primary-color: #000000;
+        --secondary-color: #ffffff;
+        --accent-color: #a36d16;
+        --text-color: #111111;
+        --subtext-color: #555555;
+        --border-color: #e5e5e5;
+        --success: #00b67a;
+        --error: #dc3545;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        color: var(--text-color);
+      }
+
+      .status-container {
+        text-align: center;
+        padding: 40px;
+        background: var(--secondary-color);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 90%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .status-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-color), #fff);
+      }
+
+      .status-icon {
+        font-size: 64px;
+        margin-bottom: 20px;
+        animation: pulse 2s infinite;
+      }
+
+      .offline-icon {
+        color: var(--error);
+      }
+
+      .online-icon {
+        color: var(--success);
+      }
+
+      .status-message {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .offline-message {
+        display: none;
+        color: var(--error);
+      }
+
+      .online-message {
+        display: none;
+        color: var(--success);
+      }
+
+      .status-description {
+        color: var(--subtext-color);
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      .retry-button {
+        background: var(--primary-color);
+        color: var(--secondary-color);
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .retry-button:hover {
+        background: var(--accent-color);
+        transform: translateY(-2px);
+      }
+
+      .retry-button i {
+        font-size: 18px;
+      }
+
+      .logo {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .logo img {
+        height: 32px;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .status-container {
+          padding: 30px 20px;
+        }
+
+        .status-icon {
+          font-size: 48px;
+        }
+
+        .status-message {
+          font-size: 20px;
+        }
+
+        .status-description {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="/" class="logo">
+      <img src="../landing/landing_assets/images/gdLogo.png" alt="Golden Dream Logo">
+      Golden Dream
+    </a>
+
+    <div class="status-container">
+      <div class="offline-message" id="offlineMsg">
+        <i class="fas fa-wifi-slash status-icon offline-icon"></i>
+        <div class="status-message">No Internet Connection</div>
+        <div class="status-description">
+          Please check your internet connection and try again. We'll keep trying to reconnect automatically.
+        </div>
+        <button class="retry-button" onclick="window.location.reload()">
+          <i class="fas fa-sync-alt"></i>
+          Retry Connection
+        </button>
+      </div>
+
+      <div class="online-message" id="onlineMsg">
+        <i class="fas fa-wifi status-icon online-icon"></i>
+        <div class="status-message">You are Online</div>
+        <div class="status-description">
+          Great! You're connected to the internet. You can continue using Golden Dream.
+        </div>
+        <button class="retry-button" onclick="window.location.href='../'">
+          <i class="fas fa-home"></i>
+          Go to Homepage
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Register Service Worker
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("./sw.js")
+            .then((registration) => {
+              console.log("ServiceWorker registration successful");
+            })
+            .catch((err) => {
+              console.log("ServiceWorker registration failed: ", err);
+            });
+        });
+      }
+
+      function updateOnlineStatus() {
+        document.getElementById("offlineMsg").style.display = "none";
+        document.getElementById("onlineMsg").style.display = "block";
+      }
+
+      function updateOfflineStatus() {
+        document.getElementById("onlineMsg").style.display = "none";
+        document.getElementById("offlineMsg").style.display = "block";
+      }
+
+      window.addEventListener("online", updateOnlineStatus);
+      window.addEventListener("offline", updateOfflineStatus);
+
+      if (navigator.onLine) {
+        updateOnlineStatus();
+      } else {
+        updateOfflineStatus();
+      }
+    </script>
+  </body>
+</html>

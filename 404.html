@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page Not Found | Golden Dream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        color: #333;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        width: 90%;
+        margin: 0 auto;
+        padding: 30px 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .error-content {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        text-align: center;
+        max-width: 600px;
+        width: 100%;
+      }
+
+      .logo {
+        margin-bottom: 30px;
+      }
+
+      .logo h1 {
+        font-size: 2.2rem;
+        color: #3a7bd5;
+        margin-bottom: 5px;
+      }
+
+      .logo p {
+        color: #666;
+        font-size: 1rem;
+      }
+
+      .error-icon {
+        font-size: 6rem;
+        color: #e74c3c;
+        margin-bottom: 20px;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: #2c3e50;
+      }
+
+      p {
+        margin-bottom: 20px;
+        line-height: 1.5;
+        color: #555;
+      }
+
+      .error-code {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #e74c3c;
+        margin-bottom: 25px;
+      }
+
+      .btn {
+        display: inline-block;
+        background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+        color: white;
+        padding: 12px 25px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        margin: 10px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 2px solid #3a7bd5;
+        color: #3a7bd5;
+      }
+
+      .btn-outline:hover {
+        background: #3a7bd5;
+        color: white;
+      }
+
+      .links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 25px 0;
+        flex-wrap: wrap;
+      }
+
+      .link-card {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 10px;
+        width: 140px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: #333;
+      }
+
+      .link-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        background: #e9ecef;
+      }
+
+      .link-card i {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+        color: #3a7bd5;
+      }
+
+      .link-card h3 {
+        font-size: 1rem;
+        margin-bottom: 5px;
+      }
+
+      .link-card p {
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 0;
+      }
+
+      footer {
+        background: white;
+        padding: 30px 0;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-logo h2 {
+        font-size: 1.5rem;
+        color: #3a7bd5;
+        margin-bottom: 5px;
+      }
+
+      .footer-logo p {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 0;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 20px;
+      }
+
+      .footer-links a {
+        color: #555;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #3a7bd5;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 15px;
+      }
+
+      .footer-social a {
+        color: #555;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+      }
+
+      .footer-social a:hover {
+        color: #3a7bd5;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+        color: #777;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .error-content {
+          padding: 30px 20px;
+        }
+
+        .error-icon {
+          font-size: 5rem;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+        }
+
+        .footer-content {
+          flex-direction: column;
+          gap: 20px;
+          text-align: center;
+        }
+
+        .footer-links {
+          justify-content: center;
+        }
+
+        .footer-social {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="error-content">
+        <div class="logo">
+          <h1>Golden Dream</h1>
+          <p>Your Financial Future Starts Here</p>
+        </div>
+
+        <div class="error-icon">
+          <i class="fas fa-exclamation-circle"></i>
+        </div>
+
+        <div class="error-code">404</div>
+        <h2>Page Not Found</h2>
+        <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+
+        <!-- <div class="links">
+          <a href="admin/" class="link-card">
+            <i class="fas fa-user-shield"></i>
+            <h3>Admin Panel</h3>
+            <p>Access admin dashboard</p>
+          </a>
+
+          <a href="promoter/" class="link-card">
+            <i class="fas fa-user-tie"></i>
+            <h3>Promoter Panel</h3>
+            <p>Access promoter dashboard</p>
+          </a>
+
+          <a href="customer/" class="link-card">
+            <i class="fas fa-user"></i>
+            <h3>Customer Panel</h3>
+            <p>Access customer dashboard</p>
+          </a>
+        </div> -->
+
+        <div>
+          <a href="https://goldendream.in" class="btn">Go to Homepage</a>
+          <a onclick="history.back()" class="btn btn-outline">Go Back</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>Golden Dream</h2>
+          <p>Your Financial Future Starts Here</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.php">Home</a>
+          <a href="#">About Us</a>
+          <a href="#">Services</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Golden Dream. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
