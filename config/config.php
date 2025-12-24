@@ -9,9 +9,9 @@ class Database
     // public $conn;
 
     public $host = "localhost";
-    public $db_name = "u229215627_mp_goldendream";
-    public $username = "u229215627_mp_goldendream";
-    public $password = "Azl@n2002";
+    public $db_name = "u232955123_mp_goldenDream";
+    public $username = "u232955123_mp_goldenDream";
+    public $password = "Brandweave@25";
     public $conn;
 
     // Base URL configuration
